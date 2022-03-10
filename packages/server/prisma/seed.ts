@@ -19,7 +19,7 @@ const generateUsers: DataGenerator<Prisma.UserCreateInput> = function* (count) {
 
 async function main() {
   await Promise.all(
-    Array.from(generateUsers(10), (user) => prisma.user.create({ data: user }))
+    Array.from(generateUsers(10), (data) => prisma.user.create({ data }))
   );
 }
 
