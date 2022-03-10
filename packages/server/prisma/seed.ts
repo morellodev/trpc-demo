@@ -1,7 +1,5 @@
 import { faker } from "@faker-js/faker";
 import { Prisma, PrismaClient } from "@prisma/client";
-import { array as A, either as E, taskEither as TE } from "fp-ts";
-import { pipe } from "fp-ts/function";
 
 const prisma = new PrismaClient();
 
@@ -20,14 +18,9 @@ const generateUsers: DataGenerator<Prisma.UserCreateInput> = function* (count) {
 };
 
 async function main() {
-  const effect = pipe(
-    generateUsers(10),
-    (a) => Array.from(a),
-    A.map((u) => TE.tryCatch(() => prisma.user.create({ data: u }), E.toError)),
-    A.sequence(TE.ApplicativePar)
+  await Promise.all(
+    Array.from(generateUsers(10), (user) => prisma.user.create({ data: user }))
   );
-
-  await effect();
 }
 
 main()
