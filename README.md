@@ -12,8 +12,8 @@ In order to be able to fetch the data, you need to setup a database first. This 
 
 To setup the database:
 
-1. Open the server `.env` file and set the `DATABASE_URL` variable to the URL of your database
-2. Run `yarn workspace @w/server prisma db push` to align the database with the Prisma schema and generate the Prisma client
+1. Open the server `.env` file and set the `DATABASE_URL` variable to the URL of your database ([Prisma documentation](https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases/connect-your-database-typescript-postgres))
+2. Run `yarn workspace @w/server prisma db push` to align the database with the Prisma schema and generate the Prisma client ([Prisma documentation](https://www.prisma.io/docs/concepts/components/prisma-migrate/db-push))
 
 ### Client
 
