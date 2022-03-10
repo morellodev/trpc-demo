@@ -1,6 +1,6 @@
 # tRPC Demo
 
-This sample project demonstrates the use of the tRPC library. It is a monorepo (using [Yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces)) with both a client and a server.
+This sample project demonstrates the use of the [tRPC library](https://trpc.io). It is a monorepo (using [Yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces)) with both a client and a server.
 
 ## Prerequisites
 
