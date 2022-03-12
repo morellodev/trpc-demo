@@ -14,7 +14,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    // TODO: remove "react/next" once React 18 is released
+    "types": ["react/next"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

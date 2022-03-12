@@ -1,8 +1,8 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
 import { loggerLink } from "@trpc/client/links/loggerLink";
-import React from "react";
-import ReactDOM from "react-dom";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "react-query";
 // import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -28,8 +28,12 @@ const trpcClient = trpc.createClient({
   transformer: superjson,
 });
 
-ReactDOM.render(
-  <React.StrictMode>
+const container = document.getElementById("root");
+if (!container) throw new Error("No #root element found");
+const root = createRoot(container);
+
+root.render(
+  <StrictMode>
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
         <ChakraProvider>
@@ -45,6 +49,5 @@ ReactDOM.render(
         </ChakraProvider>
       </QueryClientProvider>
     </trpc.Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </StrictMode>
 );
